@@ -24,7 +24,7 @@ class Model_UserTest extends PHPUNit_Framework_TestCase {
         $users = Model_User::getUsers();
         $this->assertArrayHasKey('Luiz Teste',$users);
     }
-    
+
     public function testCanFindByUsername(){
         Model_User::create($this->username,$this->password);
         $user = Model_User::findByUsername($this->username);

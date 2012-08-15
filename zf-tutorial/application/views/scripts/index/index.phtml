@@ -1,0 +1,22 @@
+<?php
+    $this->title = "My Albums";
+    $this->headTitle($this->title);
+?>
+<p><a href="<?php echo $this->url(array('controller'=>'index','action'=>'add')); ?>">Adicionar novo Album</a> </p>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($this->albums as $album) : ?>
+        <tr>
+            <td><?php echo $this->escape($album->title); ?></td>
+            <td><?php echo $this->escape($album->Artist);?></td>
+            <td>
+                <a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'edit','id'=>$album->id)); ?>">Editar</a>
+                <a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'delete','id'=>$album->id)); ?>">Deletar</a>
+            </td>
+        </tr>
+    <?php endforeach ?>
+</table>
