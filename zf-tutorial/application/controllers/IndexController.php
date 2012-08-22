@@ -10,6 +10,7 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
+        // action body
         $albums = new Application_Model_DbTable_Albums();
         $this->view->albums = $albums->fetchAll();
     }
@@ -17,20 +18,19 @@ class IndexController extends Zend_Controller_Action
     public function addAction()
     {
         $form = new Application_Form_Album();
-        $form->submit->setLabel('add');
+        $form->submit->setLabel('Adicionar');
         $this->view->form = $form;
 
-        if($this->getRequest()->isPost()){
+        if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
-            if($form->isValid($formData)){
+            if ($form->isValid($formData)) {
                 $artist = $form->getValue('artist');
                 $title = $form->getValue('title');
-                
                 $albums = new Application_Model_DbTable_Albums();
                 $albums->addAlbum($artist,$title);
 
                 $this->_helper->redirector('index');
-            } else{
+            }else{
                 $form->populate($formData);
             }
         }
@@ -39,25 +39,25 @@ class IndexController extends Zend_Controller_Action
     public function editAction()
     {
         $form = new Application_Form_Album();
-        $form->submit->setLabel('Save');
+        $form->submit->setLabel('Salvar');
         $this->view->form = $form;
 
-        if($this->getRequest()->isPost()){
+        if ($this->getRequest()->isPost()) {
             $formData = $this->getRequest()->getPost();
-            if($form->isValid($formData)){
+            if ($form->isValid($formData)) {
                 $id = (int)$form->getValue('id');
                 $artist = $form->getValue('artist');
                 $title = $form->getValue('title');
                 $albums = new Application_Model_DbTable_Albums();
-                $albums->updateAlbum($id,$artist,$title);
+                $albums->updateAlbum($id, $artist, $title);
 
                 $this->_helper->redirector('index');
             }else{
                 $form->populate($formData);
             }
-        } else {
+        }else{
             $id = $this->_getParam('id',0);
-            if($id>0){
+            if($id > 0){
                 $albums = new Application_Model_DbTable_Albums();
                 $form->populate($albums->getAlbum($id));
             }
@@ -68,7 +68,7 @@ class IndexController extends Zend_Controller_Action
     {
         if($this->getRequest()->isPost()){
             $del = $this->getRequest()->getPost('del');
-            if($del == "Yes"){
+            if($del == 'Sim'){
                 $id = $this->getRequest()->getPost('id');
                 $albums = new Application_Model_DbTable_Albums();
                 $albums->deleteAlbum($id);
@@ -77,7 +77,7 @@ class IndexController extends Zend_Controller_Action
         } else {
             $id = $this->_getParam('id',0);
             $albums = new Application_Model_DbTable_Albums();
-            $this->view->album = $albums-getAlbum($id);
+            $this->view->album = $albums->getAlbum($id);
         }
     }
 }

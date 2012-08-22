@@ -81,12 +81,7 @@
       <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
       <testApplicationDirectory>
         <testApplicationControllerDirectory>
-          <testApplicationControllerFile forControllerName="Index">
-            <testApplicationActionMethod forActionName="index"/>
-            <testApplicationActionMethod forActionName="add"/>
-            <testApplicationActionMethod forActionName="edit"/>
-            <testApplicationActionMethod forActionName="delete"/>
-          </testApplicationControllerFile>
+          <testApplicationControllerFile forControllerName="Index"/>
         </testApplicationControllerDirectory>
       </testApplicationDirectory>
       <testLibraryDirectory/>

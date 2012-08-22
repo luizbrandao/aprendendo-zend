@@ -1,15 +1,14 @@
-<?php
-
-$this->title = "Apagando Posts";
-$this->headTitle($this->title);
-
+<?php 
+	$this->title = "Deletar Album";
+	$this->headTitle($this->title);
 ?>
-
-<p>Você tem certeza que deseja deletar '<?php echo $this->escape($this->album['title']); ?>' by '<?php echo $this->escape($this->album['artist']); ?>'</p>
+<p>
+	Você tem certeza que deseja deletar '<?php echo $this->escape($this->album['title']);?>' by '<?php echo $this->escape($this->album['artist']); ?>'?
+</p>
 <form action="<?php echo $this->url(array('action'=>'delete')); ?>" method="post">
 	<div>
-		<input type="hidden" name="id" value="<?php echo $this->album['id'];?>"/>
-		<input type="submit" name="del" value="Sim"/>
-		<input type="submit" name="del" value="N&atilde;o">
+		<input type="hidden" name="id" value="<?php echo $this->album['id']; ?>" />
+		<input type="submit" name="del" value="Sim" class="btn btn-danger">
+		<input type="submit" name="del" value="Não" class="btn btn-success">
 	</div>
 </form>
