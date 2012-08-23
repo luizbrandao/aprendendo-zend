@@ -50,16 +50,14 @@ class AuthController extends Zend_Controller_Action
         $authAdapter->setTableName('users')
             	    ->setIdentityColumn('username')
             		->setCredentialColumn('password')
-            		->setCredentialTreatment('SHA1(CONCAT(?,salt))');
+            		->setCredentialTreatment('md5(?)');
 
         return $authAdapter;
     }
 
     public function logoutAction()
     {
-        // action body
+        Zend_Auth::getInstance()->clearIdentity();
+        $this->_helper->redirector('index');
     }
-
-
 }
-
