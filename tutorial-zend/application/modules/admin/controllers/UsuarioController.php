@@ -50,15 +50,4 @@ class Admin_UsuarioController extends Zend_Controller_Action
     	$usuario = $this->_db->fetchRow('id = 1');
     	$this->view->usuario = $usuario;
     }
-
-
 }
-
-
-
-
-
-
-
-
-
